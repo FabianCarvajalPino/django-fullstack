@@ -11,6 +11,13 @@
 <body>
     <div class="wrapper">
         <h1 class="titulo">Edit show {{show.id}}</h1>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
         <form action="/shows/{{show.id}}/update" method="POST">
             {% csrf_token %}
             <p>Title</p>
